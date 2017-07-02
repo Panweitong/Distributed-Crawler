@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content_header %}
+    <div style="font-size: 30px;color: #0d6aad">开启和关闭redis队列</div>
+    <div style="text-align: center;font-size: 20px">
+        <span>请输入初始url:</span>
+        <input type="text" value="" id="url" style="width:300px;margin: 300px 0 0 40px">
+        <input type="button" value="启动redis" onclick="startRedis()" style="margin: 0 15px 0 15px;border-radius: 15px;outline: none">
+        <input type="button" value="清空redis" onclick="closeRedis()" style="border-radius: 15px;outline: none">
+    </div>
+    <script type="text/javascript">
+        function startRedis() {
+            $.ajax({
+                     type: "POST",
+                     url: "/start",
+                     data: {
+                         url: document.getElementById("url").value
+                     },
+                     success: function (result) {
+                         alert(result);
+                     }
+                 });
+        }
+        function closeRedis() {
+             $.ajax({
+                     type: "POST",
+                     url: "/close",
+                     data: {
+                         url: document.getElementById("url").value
+                     },
+                     success: function (result) {
+                         alert(result);
+                         window.location.reload();
+                     }
+                 });
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content_header %}
+    <div class="box">
+    <div class="box-header">
+        <h3 class="box-title">电商数据</h3>
+    </div>
+    <div class="box-body table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th style="width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">标题</th>
+                <th style="width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">京东价</th>
+                <th style="width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">累计评价</th>
+                <th style="width: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; ">店铺</th>
+            </tr>
+            {% for res in results %}
+            <tr>
+                <td>{{ res.title }}</td>
+                <td>￥{{ res.price }}</td>
+                <td>{{ res.evaluate }}</td>
+                <td>{{ res.store }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+    </div>
+    <div align="center">
+   {% for res in result %}
+        <a href="/info?page=0">返回首页</a>
+        总记录数：{{ res.count }}
+        总页数：{{ res.num_pages }}
+        当前页：<fount color="red">{{ res.curr_page }}</fount>
+        {% if res.has_previous %}
+            <a href="/info?page=0">首页</a>
+            <a href="/info?page= {{res.previous_page_number}}">上一页</a>
+        {% else %}
+        首页 上一页
+        {% endif %}
+        {% if res.has_next %}
+            <a href="/info?page={{ res.nex_page_number }}">下一页</a>
+            <a href="/info?page={{ res.last_page }}"> 尾页</a>
+        {% else %}
+           下一页 尾页
+        {% endif %}
+   {% endfor %}
+    </div>
+{% endblock %}

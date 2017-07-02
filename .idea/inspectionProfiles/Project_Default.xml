@@ -1,0 +1,52 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E271" />
+          <option value="E225" />
+          <option value="E111" />
+          <option value="" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="list" />
+          <option value="input" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="myclass" />
+          <option value="httplib" />
+          <option value="py.address.*" />
+          <option value="py.hello.__builtin__" />
+          <option value="raw_input" />
+          <option value="file" />
+          <option value="python.*" />
+          <option value="urllib.urlopen" />
+          <option value="urllib2" />
+          <option value="cookielib" />
+          <option value="public_methods" />
+          <option value="blog_spider" />
+          <option value="mood_spider" />
+          <option value="friend_spider" />
+          <option value="information_spider" />
+          <option value="spide_controller" />
+          <option value="urlparse" />
+          <option value="sys.*" />
+          <option value="init_messages" />
+          <option value="InformationExtraction" />
+          <option value="web" />
+          <option value="HtmlExtraction" />
+          <option value="execjs" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>数据分析</title>
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/global.css?1a37c12" />
+    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/vendor/css-toggle-switch/dist/toggle-switch.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://static.bosonnlp.com/stylesheets/demo.css?1a37c12" />
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="http://static.bosonnlp.com/vendor/es5-shim/es5-shim.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% extends "base.html" %}
+{% block content_header %}
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+	var hm = document.createElement("script");
+	hm.src = "//hm.baidu.com/hm.js?6629d4aae357d8d3e47238c93f1e1d78";
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+<script type="text/javascript">
+    function getData() {
+          text = document.getElementById("txt-analysis").value;
+          $.ajax({
+              type: "POST",
+              url: "/TextAnalyze/",
+              data: {
+                  text:text
+              },
+              dataType: "json",
+              success: function (result) {
+                  document.getElementById("result").innerHTML =result.result1;
+                  document.getElementById("title").innerHTML=result.result2;
+              }
+          });
+    }
+</script>
+<div id="content-page">
+<div id="demo-page">
+  <div id="demo-container" class="container">
+    <div class="input-chunk chunk">
+        <h4><strong>数据分析</strong></h4>
+      <textarea id="txt-analysis" class="input"></textarea>
+      <button id="btn-analysis" class="btn btn-arrow btn-radius" onclick="getData()"><span class="icon"></span>提交文本</button>
+      <div class="warn-msg hide">
+        <span class="icon"></span>
+        <span class="txt">目前仅支持GBK字符集。分析结果已过滤暂不支持的语言或字符。</span>
+      </div>
+    </div>
+    <div class="main-title">
+      <span class="dot-line-gray"></span>
+      <span class="title" style="background-color:#22a3ff;color: white">分析结果</span>
+    </div>
+      <div class="col-xs-1 demo-content">
+       <div id="sideBar" class="col-xs-3 bs-sidebar" width="100%" role="complementary">
+        <div class="chunk bs-sidebar-chunk" style="width: 176px;">
+          <ul class="nav">
+               <li class=" summary">
+              <a class="hide" href="#overview-summary"></a>
+              <div class="arrow"></div>
+              <div class="title">
+                <a href="#overview-summary"><span class="icon"></span>新闻摘要</a>
+              </div>
+              <div class="line"></div>
+            </li>
+            <li class=" key">
+              <a class="hide" href="#overview-key"></a>
+              <div class="arrow"></div>
+              <div class="title">
+                <a href="#overview-key"><span class="icon"></span>关键词提取</a>
+              </div>
+              <div class="line"></div>
+            </li>
+          </ul>
+         </div>
+       </div>
+     </div>
+      <div class="col-xs-9 main-content" role="main" style="float: right">
+          <div id="overview-summary" class="chunk">
+            <div class="col-xs-12">
+                <div class="title">新闻摘要:</div>
+            </div>
+            <div class="col-xs-12">
+                <p class="result" id="title" style="font-size: 18px"></p>
+            </div>
+            <div class="warn-tips hide"><span class="icon"></span><span class="txt"></span></div>
+          </div>
+          <div id="overview-key" class="chunk">
+                <div class="col-xs-12">
+                     <div class="title">关键词提取:</div>
+                </div>
+                <br><br><br>
+                <div class="col-xs-12">
+                     <p class="result" id="result" style="color: #c9302c;font-size: 18px">
+                     </p>
+                </div>
+                <div class="warn-tips hide"><span class="icon"></span><span class="txt"></span></div>
+          </div>
+       </div>
+      </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
+
